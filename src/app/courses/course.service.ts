@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class CourseService {
   private coursesUrl: string = 'http://localhost:3100/api/courses';
 
+  course: Course;
   // constructor(private httpClient: HttpClient) {}
 
   retrieveAll(): Course[] {
@@ -16,6 +17,21 @@ export class CourseService {
     return this.COURSES;
     // return this.httpClient.get<Course[]>(this.coursesUrl);
   }
+
+  retrieveById(id: number): Course {
+    return this.COURSES.find(function (course) {
+      return course.id === id;
+    });
+  }
+
+  save(course: Course): void {
+    if (course.id) {
+      const index = this.COURSES.findIndex((courseIterator: Course) => {
+        return courseIterator.id === course.id;
+      });
+    }
+  }
+
   /*
   retrieveById(id: number): Observable<Course> {
     return this.httpClient.get<Course>(`${this.coursesUrl}/${id}`);
@@ -42,7 +58,8 @@ export class CourseService {
       id: 1,
       name: 'Angular: CLI',
       releaseDate: 'November 2, 2019',
-      // description:    'Neste curso, os alunos irão obter um grande conhecimento nos principais recursos do CLI.',
+      description:
+        'Neste curso, os alunos irão obter um grande conhecimento nos principais recursos do CLI.',
       duration: 120,
       code: 'XLF-1212',
       rating: 3,
@@ -53,7 +70,8 @@ export class CourseService {
       id: 2,
       name: 'Angular: Forms',
       releaseDate: 'November 4, 2019',
-      // description: Neste curso, os alunos irão obter um conhecimento aprofundado sobre os recursos disponíveis no módulo de Forms.',
+      description:
+        'Neste curso, os alunos irão obter um conhecimento aprofundado sobre os recursos disponíveis no módulo de Forms.',
       duration: 80,
       code: 'DWQ-3412',
       rating: 3.5,
@@ -64,7 +82,8 @@ export class CourseService {
       id: 3,
       name: 'Angular: HTTP',
       releaseDate: 'November 8, 2019',
-      //  description:  'Neste curso, os alunos irão obter um conhecimento aprofundado sobre os recursos disponíveis no módulo de HTTP.',
+      description:
+        'Neste curso, os alunos irão obter um conhecimento aprofundado sobre os recursos disponíveis no módulo de HTTP.',
       duration: 80,
       code: 'QPL-0913',
       rating: 4.0,
@@ -75,7 +94,8 @@ export class CourseService {
       id: 4,
       name: 'Angular: Router',
       releaseDate: 'November 16, 2019',
-      //description:'Neste curso, os alunos irão obter um conhecimento aprofundado sobre os recursos disponíveis no módulo de Router'
+      description:
+        'Neste curso, os alunos irão obter um conhecimento aprofundado sobre os recursos disponíveis no módulo de Router',
       duration: 80,
       code: 'OHP-1095',
       rating: 4.5,
@@ -86,7 +106,8 @@ export class CourseService {
       id: 5,
       name: 'Angular: Animations',
       releaseDate: 'November 25, 2019',
-      // description:  'Neste curso, os alunos irão obter um conhecimento aprofundado sobre os recursos disponíveis sobre Animation',
+      description:
+        'Neste curso, os alunos irão obter um conhecimento aprofundado sobre os recursos disponíveis sobre Animation',
       duration: 80,
       code: 'PWY-9381',
       rating: 5,
