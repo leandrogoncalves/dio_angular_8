@@ -30,9 +30,14 @@
         <app-start [rating]="course.rating"></app-start>
       </td>
       <td>
-        <a [routerLink]="['/course/info', course.id]" class="btn btn-primary"
+        <a
+          [routerLink]="['/course/info', course.id]"
+          class="btn btn-primary mr-2"
           >Edit</a
         >
+        <button (click)="deleteById(course.id)" class="btn btn-danger">
+          Delete
+        </button>
       </td>
     </tr>
   </tbody>
