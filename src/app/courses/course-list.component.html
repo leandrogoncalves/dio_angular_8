@@ -27,7 +27,7 @@
       <td>{{ course.code | lowercase | replace: "-":" " }}</td>
       <td>{{ course.releaseDate | date: "dd/MM/yyyy" }}</td>
       <td>
-        <app-start [rating]="course.rating"></app-start>
+        <app-star [rating]="course.rating"></app-star>
       </td>
       <td>
         <a
