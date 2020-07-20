@@ -5,13 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { Error404Component } from './error404/error404.component';
+import { CoreModule } from '../core/core.module';
+import { Error404Component } from '../core/component/error-404/error-404.component';
 
 import { CourseModule } from './courses/course.module';
 
 @NgModule({
-  declarations: [AppComponent, NavBarComponent, Error404Component],
+  declarations: [AppComponent, Error404Component],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -27,6 +27,7 @@ import { CourseModule } from './courses/course.module';
       },
     ]),
     CourseModule,
+    CoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
